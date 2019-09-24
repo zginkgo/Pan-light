@@ -1,0 +1,30 @@
+syntax = "proto3";
+package storage;
+
+
+message globalData {
+    map<string, state> userStateMap = 1;
+    string currentUser = 2;
+    int64 internalServerPort = 3;
+}
+
+message state {
+    string token = 1;
+    message setting {
+        int64 downloadSegSize = 1;
+        int64 downloadCoroutine = 2;
+    }
+    setting settings = 2;
+    repeated cookies panCookie = 3;
+    map<string, string> userStorage = 4;
+    string username = 5;
+    string uk = 6;
+    bool logout = 7;
+}
+
+message cookies {
+    string key = 1;
+    string value = 2;
+    string domain = 3;
+    int64 expires = 4;
+}
